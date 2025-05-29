@@ -55,7 +55,7 @@ const StartupCard: React.FC<StartupCardProps> = ({
           />
         </Link>
       </div>
-      <Link href={`startup/${_id}`}>
+      <div>
         <p className="startup-card_desc">{description}</p>
 
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -72,7 +72,7 @@ const StartupCard: React.FC<StartupCardProps> = ({
             </Link>
           </Button>
         </div>
-      </Link>
+      </div>
     </li>
   );
 };
