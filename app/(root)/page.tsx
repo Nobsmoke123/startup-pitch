@@ -11,10 +11,10 @@ export default async function Home({
   const query = (await searchParams).query || "";
 
   const posts = (await client.fetch(STARTUPS_QUERY)) as {
-    createdAt: string;
-    _id: string;
+    _createdAt: string;
+    _id: number;
     author: {
-      _id: string;
+      _id: number;
       bio: string;
       image: string;
       name: string;
