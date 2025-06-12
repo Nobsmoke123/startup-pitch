@@ -10,10 +10,13 @@ export default async function Home({
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query || "";
+  const params = { search: query || null };
 
+  console.log("Search query:", query);
   // const {posts} = (await client.fetch(STARTUPS_QUERY)) as StartUpTypeCard[];
   const { data: posts } = (await sanityFetch({
     query: STARTUPS_QUERY,
+    params,
   })) as { data: StartUpTypeCard[] };
 
   console.log(JSON.stringify(posts, null, 2));
