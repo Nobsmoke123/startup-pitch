@@ -10,7 +10,25 @@ export default async function Home({
 }) {
   const query = (await searchParams).query || "";
 
-  const posts = await client.fetch(STARTUPS_QUERY);
+  const posts = (await client.fetch(STARTUPS_QUERY)) as {
+    createdAt: string;
+    _id: string;
+    author: {
+      _id: string;
+      bio: string;
+      image: string;
+      name: string;
+    };
+    category: string;
+    description: string;
+    image: string;
+    slug: {
+      _type: string;
+      current: string;
+    };
+    title: string;
+    views: number;
+  }[];
 
   console.log(JSON.stringify(posts, null, 2));
 
