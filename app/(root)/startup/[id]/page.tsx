@@ -5,8 +5,10 @@ import { STARTUP_BY_ID_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
 import markdownit from "markdown-it";
+import { Skeleton } from "@/components/ui/skeleton";
+import View from "@/components/View";
 
 export const experimental_ppr = true; // Enable Partial Prerendering
 
@@ -79,6 +81,12 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         </div>
 
         <hr className="divider" />
+
+        {/* Editor recommended startups */}
+        <Suspense fallback={<Skeleton className="view_skeleton" />}>
+          {/* Fetch and display recommended startups here */}
+          <View id={id} />
+        </Suspense>
       </section>
     </>
   );
