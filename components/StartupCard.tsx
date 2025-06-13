@@ -18,7 +18,7 @@ import { Author, Startup } from "@/sanity/types";
 // };
 
 export type StartUpTypeCard = Omit<Startup, "author"> & {
-  author?: Pick<Author, "_id" | "name">;
+  author?: Pick<Author, "_id" | "name" | "image" | "username">;
 };
 
 const StartupCard: React.FC<StartUpTypeCard> = ({
