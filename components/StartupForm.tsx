@@ -8,12 +8,16 @@ import { Button } from "./ui/button";
 import { Send } from "lucide-react";
 import { formSchema } from "@/lib/validation";
 import z from "zod";
+import { toast } from "sonner";
 
 const StartupForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [pitch, setPitch] = useState("**Hello world!!!**");
 
-  const handleFormSubmit = async (previousState: any, formData: FormData) => {
+  const handleFormSubmit = async (
+    previousState: any,
+    formData: FormData
+  ) => {
     try {
       const formValues = {
         title: formData.get("title") as string,
@@ -30,7 +34,19 @@ const StartupForm = () => {
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors = error.flatten().fieldErrors;
+
         setErrors(fieldErrors as unknown as Record<string, string>);
+
+        toast.error("Validation failed. Please check your input.", {
+          description: "" + Object.values(fieldErrors).join(" "),
+          action: {
+            label: "X",
+            onClick: () => {
+              toast.dismiss();
+            },
+          },
+          position: "top-right",
+        });
         return {
           ...previousState,
           error: "Validation failed",
