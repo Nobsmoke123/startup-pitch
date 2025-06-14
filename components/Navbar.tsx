@@ -1,4 +1,5 @@
 import { auth, signOut, signIn } from "@/auth";
+import { LogOut, Plus, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -26,14 +27,18 @@ const Navbar = async () => {
                 href="/startup/create"
                 className="text-gray-800 hover:text-blue-600"
               >
-                <span className="font-bold">Create</span>
+                <span className="font-bold max-sm:hidden">Create</span>
+                <Plus className="size-6 sm:hidden text-red-500" />
               </Link>
 
               <Link
-                href={`/user/${session?.user?.id}`}
+                href={`/user/${session?.id}`}
                 className="text-gray-800 hover:text-blue-600"
               >
-                <span className="font-bold">{session?.user?.name}</span>
+                <span className="font-bold max-sm:hidden">
+                  {session?.user?.name}
+                </span>
+                <User className="size-6 sm:hidden text-red-500" />
               </Link>
 
               <form
@@ -44,7 +49,8 @@ const Navbar = async () => {
                 className="text-black"
               >
                 <button type="submit">
-                  <span className="font-bold">Sign Out</span>
+                  <span className="font-bold max-sm:hidden">Sign Out</span>
+                  <LogOut className="size-6 sm:hidden text-red-500" />
                 </button>
               </form>
             </>
