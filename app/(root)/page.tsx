@@ -18,21 +18,7 @@ export default async function Home({
     params,
   })) as { data: StartUpTypeCard[] };
 
-  console.log(JSON.stringify(posts, null, 2));
-
-  // const posts = [
-  //   {
-  //     _id: 1,
-  //     _createdAt: new Date(),
-  //     views: 55,
-  //     author: { _id: 1, name: "Chidera Ejimofor" },
-  //     description: "This is a description",
-  //     image:
-  //       "https://images.unsplash.com/photo-1742827871494-3a34fc06b69f?q=80&w=1984&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //     category: "Robots",
-  //     title: "We Robots",
-  //   },
-  // ];
+  // console.log(JSON.stringify(posts, null, 2));
 
   return (
     <>
